@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::controller('IndexController')->group(function () {
+    Route::get('testAuth', 'testAuth')->middleware('auth:sanctum')->name('test.auth');
+});
+
 Route::controller('AuthController')->namespace('Auth')->prefix('auth')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::post('/login', 'login')->name('login');
@@ -26,4 +30,10 @@ Route::controller('AuthController')->namespace('Auth')->prefix('auth')->group(fu
     Route::get('/email/verify-notice', 'notice')->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', 'verify')->name('verification.verify');
     Route::post('/email/resend', 'resend')->name('verification.resend');
+});
+
+Route::namespace('External')->prefix('external')->name('external.')->group(function () {
+    Route::controller('CoinmarketCapApiController')->prefix('cmp')->name('coinmarketcap.')->group(function () {
+        Route::get('index/{start}/{limit}', 'index')->name('index');
+    });
 });
