@@ -36,6 +36,6 @@ class CoinmarketCapApiController extends Controller
         curl_close($curl);
         $response = json_decode($response, true);
 
-        return $this->success($response["data"]);
+        return response()->json($response["data"]);
     }
 }
