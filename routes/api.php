@@ -27,9 +27,7 @@ Route::controller('AuthController')->namespace('Auth')->prefix('auth')->group(fu
     Route::post('/login', 'login')->name('login');
     Route::post('/register', 'register')->name('register');
     Route::post('/logout', 'logout')->name('logout')->middleware('auth:sanctum');
-    Route::get('/email/verify-notice', 'notice')->name('verification.notice');
-    Route::get('/email/verify/{id}/{hash}', 'verify')->name('verification.verify');
-    Route::post('/email/resend', 'resend')->name('verification.resend');
+    Route::post('/forgot-password/send-otp', 'send_otp')->name('password.send-otp');
 });
 
 Route::namespace('External')->prefix('external')->name('external.')->group(function () {

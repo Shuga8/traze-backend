@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/preview-mail', function () {
+
+        $otp = 668945;
+
+        return new \App\Mail\VerificationOtp($otp);
+    });
