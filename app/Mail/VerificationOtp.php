@@ -27,10 +27,7 @@ class VerificationOtp extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address("murrcoin@herocollectives.com.ng", "Security"),
-            replyTo: [
-                new Address('murrcoin@herocollectives.com.ng', 'Security'),
-            ],
+            from: new Address("gp@cdeluxe-pro.com", "Security"),
             subject: 'Verification Otp',
         );
     }

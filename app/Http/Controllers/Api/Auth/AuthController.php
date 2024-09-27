@@ -6,16 +6,15 @@ use Exception;
 use App\Models\Otp;
 use App\Jobs\SignUp;
 use App\Models\User;
-use Illuminate\Support\Str;
+
 use App\Traits\HttpResponses;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\Verified;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\LoginUsersRequest;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\RegisterUsersRequest;
 
 
@@ -83,14 +82,14 @@ class AuthController extends Controller
 
             $otp = Otp::create([
                 'email' => $user->email,
-                'otp' => Str::random(6)
+                'otp' => rand(100000, 999999)
             ]);
 
             DB::commit();
 
             dispatch(new SignUp($user, $otp->otp));
 
-            return $this->success(null, "Registration successfull, Sign up with otp sent to link...");
+            return $this->success(null, "Registration successfull, please check your email");
         } catch (Exception $e) {
 
             DB::rollBack();
