@@ -90,7 +90,7 @@ class AuthController extends Controller
 
             dispatch(new SignUp($user, $otp->otp));
 
-            return $this->success(null, "Registration successfull, Please click the email verification link sent to your email.");
+            return $this->success(null, "Registration successfull, Sign up with otp sent to link...");
         } catch (Exception $e) {
 
             DB::rollBack();
