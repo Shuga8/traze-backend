@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,9 @@ Route::get('/', function () {
 
 Route::get('/preview-mail', function () {
 
-        $otp = 668945;
+    $otp = 668945;
 
-        return new \App\Mail\VerificationOtp($otp);
-    });
+    $user = User::first();
+
+    return new \App\Mail\VerificationOtp($user, $otp);
+});

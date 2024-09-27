@@ -26,7 +26,8 @@
                 style="width: 60px;height:60px;object-fit:cover;display:block;margin:20px auto;">
 
             <div style="padding: 10px 19px;">
-                <h1 style="font-size:12px;font-weight:600;">Dear Charles,</h1>
+                <h1 style="font-size:12px;font-weight:600;">Dear <span
+                        style="text-transform:capitalize;">{{ $user->username }}</span>,</h1>
 
                 <p style="margin: 10px 0px">Your One Time Password for signup is:</p>
 

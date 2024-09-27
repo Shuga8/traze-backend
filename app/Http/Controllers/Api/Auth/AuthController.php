@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use Exception;
+use App\Models\Otp;
 use App\Jobs\SignUp;
 use App\Models\User;
+use Illuminate\Support\Str;
 use App\Traits\HttpResponses;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -12,9 +15,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\LoginUsersRequest;
-use App\Http\Requests\RegisterUsersRequest;
-use Exception;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\RegisterUsersRequest;
+
 
 class AuthController extends Controller
 {
@@ -77,9 +80,15 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
-            dispatch(new SignUp($user));
+
+            $otp = Otp::create([
+                'email' => $user->email,
+                'otp' => Str::random(6)
+            ]);
 
             DB::commit();
+
+            dispatch(new SignUp($user, $otp->otp));
 
             return $this->success(null, "Registration successfull, Please click the email verification link sent to your email.");
         } catch (Exception $e) {
