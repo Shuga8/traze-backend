@@ -8,19 +8,19 @@
         <title>Verification OTP</title>
     </head>
 
-    <body
-        style="width: 100%;height: 100vh;background: #909090;display:flex;align-content:center;justify-content:center;align-items:center;">
+    <body style="width: 100%;height: 100dvh;background: #909090;display:block;">
 
         <style>
             * {
                 margin: 0;
                 padding: 0;
                 font-family: roboto;
+                overflow: hidden;
             }
         </style>
 
         <div
-            style="min-width: 270px;width:450px;max-width:450px;background:#fff;height:500px;border-radius:10px;position: relative;">
+            style="min-width: 270px;width:450px;max-width:450px;background:#fff;height:500px;border-radius:10px;position: relative; margin: 120px auto 0px auto;">
 
             <img src="https://www.herocollectives.com.ng/public/images/gpt.png" alt="Logo"
                 style="width: 60px;height:60px;object-fit:cover;display:block;margin:20px auto;">
