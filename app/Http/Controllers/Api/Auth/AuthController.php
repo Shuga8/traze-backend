@@ -108,4 +108,13 @@ class AuthController extends Controller
             'success' => ['logout successful'],
         ]);
     }
+
+    public function verifyOtp(Request $request)
+    {
+        // if (!$request->input('email') || empty(trim($request->input('email')))) {
+        //     return $this->error(null, 'enter email address', 402);
+        // }
+
+        return response()->json($request);
+    }
 }

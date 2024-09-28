@@ -26,6 +26,7 @@ Route::controller('AuthController')->namespace('Auth')->prefix('auth')->group(fu
     Route::get('/', 'index')->name('index');
     Route::post('/login', 'login')->name('login');
     Route::post('/register', 'register')->name('register');
+    Route::post('/verify-otp', 'verifyOtp')->name('verify.register.otp');
     Route::post('/logout', 'logout')->name('logout')->middleware('auth:sanctum');
     Route::post('/forgot-password/send-otp', 'send_otp')->name('password.send-otp');
 });
