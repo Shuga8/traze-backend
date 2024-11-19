@@ -29,6 +29,7 @@ Route::controller('AuthController')->namespace('Auth')->prefix('auth')->group(fu
     Route::post('/verify-otp', 'verifyOtp')->name('verify.register.otp');
     Route::post('/logout', 'logout')->name('logout')->middleware('auth:sanctum');
     Route::post('/forgot-password/send-otp', 'send_otp')->name('password.send-otp');
+    Route::post('/forgot-password/verify-otp', 'verify_password_otp')->name('password.verify-otp');
 });
 
 Route::namespace('External')->prefix('external')->name('external.')->group(function () {
